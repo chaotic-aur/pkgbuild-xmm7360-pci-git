@@ -2,7 +2,7 @@ _pkgbase=xmm7360-pci
 pkgbase=xmm7360-pci-git
 pkgname=(xmm7360-pci-dkms-git xmm7360-pci-utils-git)
 pkgver=r229.cf6625a
-pkgrel=1
+pkgrel=2
 pkgdesc='Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem'
 arch=('x86_64')
 url="https://github.com/xmm7360/xmm7360-pci"
@@ -18,6 +18,17 @@ sha256sums=('SKIP'
             '2da4f2905390604b6dd0881cf874f2ee2c3898a24f86d380d1d403b2bb74c50d'
             'b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82'
             '8389a09554df2e87f3b9df921e018bcb46585bde31e47699999b8576510e19f0')
+
+_source_pullrequests() {
+  source+=(
+    "fix-build.patch"::"https://patch-diff.githubusercontent.com/raw/xmm7360/xmm7360-pci/pull/220.diff"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
+_source_pullrequests
 
 pkgver() {
   cd ${_pkgbase}
